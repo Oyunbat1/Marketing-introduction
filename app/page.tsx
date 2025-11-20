@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import Header from "./components/Header";
 import HeroSection from "./components/HeroSection";
 import Lenis from 'lenis'
+import AboutSection from "./components/AboutUs";
 export default function Home() {
   useEffect(() => {
     const lenis = new Lenis();
@@ -17,7 +18,7 @@ export default function Home() {
     <div>
       <Header />
       <HeroSection />
-      <HeroSection />
+      <AboutSection />
     </div>
   );
 }
