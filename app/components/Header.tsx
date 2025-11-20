@@ -35,7 +35,7 @@ function Header() {
     }, []);
 
     return (
-        <div className="w-screen h-[60px] fixed">
+        <div className="w-screen h-[60px] fixed z-40">
             <div className="flex w-full justify-around p-4">
                 {isMobile ? <div className="fixed w-full flex h-[60px] justify-around items-center">
                     <h1 className={`${ubuntu.className} font-medium text-xl`}>Ai.marketing</h1>
