@@ -9,11 +9,11 @@ export const ubuntu = Ubuntu({
 export default function FAQ() {
     return (
         <div className="h-screen w-screen relative text-white bg-black flex flex-col items-center justify-center  ">
-            <div className=" flex flex-col items-center gap-2 md:gap-10 w-[300px] md:w-[1000px] absolute top-20 lg:top-50 ">
+            <div className=" flex flex-col items-center gap-2 md:gap-10 w-[300px] md:w-[1000px] absolute top-20 lg:top-40 ">
                 <h1 className={`${ubuntu.className} text-[28px] md:text-[36px] md:w-[800px] text-center`}>Digital Marketing яагаад чухал вэ?</h1>
                 <p className={`${ubuntu.className} font-extralight text-gray-300 md:w-[1000px] text-center`}>Digital marketing нь бизнесүүдэд хурдан, хямд өртгөөр, зорилтот хэрэглэгчиддээ шууд хүрэх боломжийг олгодог. Классик маркетингаас ялгаатай нь хэмжилттэй, автоматжуулалт өндөртэй, илүү ухаалаг.</p>
             </div>
-            <div className=" flex flex-col items-center  gap-2 w-[300px] md:w-[1000px] absolute top-90 md:top-120 ">
+            <div className=" flex flex-col items-center  gap-2 w-[300px] md:w-[1000px] absolute top-90 md:top-100 ">
                 <h1 className={`${ubuntu.className} text-[28px]  md:text-[36px] md:w-[1000px] text-center `}>Digital Marketing-ийн чухал болох гол шалтгаанууд</h1>
                 <ul className="text-center">
                     <ol className={`${ubuntu.className} font-extralight text-gray-300 `}>- Автоматжуулалт → цаг ба зардал хэмнэнэ (Chatbot)</ol>
