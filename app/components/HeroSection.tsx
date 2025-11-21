@@ -40,10 +40,11 @@ export default function HeroSection() {
                     ))}
                     </div>
                 </div>
-            </div> : <div className="flex flex-col justify-center items-center gap-4">            <div className="flex flex-col justify-center items-center gap-4">
-                <h1 className={`text-center text-[32px] ${ubuntu.className}`}>Та өөрийн бизнесээ бидэнтэй хамтарч бүрэн автоматжуулаарай. </h1>
-                <Button className={`border w-[180px] h-[60px] border-black text-black ${ubuntu.className}`}>Бидний тухай</Button>
-            </div>
+            </div> : <div className="flex flex-col justify-center items-center gap-4 ">
+                <div className="flex flex-col justify-center items-center gap-4 mt-2 px-1">
+                    <h1 className={`text-center text-[28px] ${ubuntu.className}`}>Та өөрийн бизнесээ бидэнтэй хамтарч бүрэн автоматжуулаарай. </h1>
+                    <Button className={`border w-[180px] h-[60px] border-black text-black ${ubuntu.className}`}>Бидний тухай</Button>
+                </div>
                 <div className="flex flex-col gap-12 mt-30">
                     <div className="flex gap-1">  {arr.map((item) => (
                         <div key={item} className="w-22 h-22 sm:w-28 sm:h-28    bg-[#ccff34]"></div>

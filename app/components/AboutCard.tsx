@@ -12,7 +12,7 @@ export default function Card({ name, src, i, job }: { name: string; src: string;
     const imageScale = useTransform(scrollYProgress, [0, 1], [2, 1])
     return (
         <div ref={container}
-            key={i} className="h-[300px] lg:h-auto sticky top-30 mb-[100px] lg:mb-[80px] flex items-center justify-center ">
+            key={i} className="h-[300px] lg:h-auto sticky top-30 mb-[100px] lg:mb-20 flex items-center justify-center ">
             <motion.div className="relative w-[320px] h-80 rounded-2xl overflow-hidden  flex justify-center items-center  bg-[#ccff34] ">
                 <motion.div style={{ scale: imageScale }}>
                     <Image alt="img" width={300}
