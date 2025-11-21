@@ -19,7 +19,7 @@ export default function HeroSection() {
         handleResize();
     }, []);
     return (
-        <div className="h-screen w-full flex flex-col justify-center items-center gap-8 m-[0px_20px]">
+        <div className="h-screen w-full flex flex-col justify-center items-center gap-8 ">
             {isTablet ? <div className="flex  justify-center w-[1200px] h-screen items-center gap-4 pl-[100px]">
                 <div className="flex flex-col w-full justify-center gap-4  ">
                     <h1 className={`${ubuntu.className} font-medium text-[32px] md:text-[42px] lg:text-[62px] xl:text-[82px]`}>Хиймэл оюун & Digital marketing</h1>
@@ -44,7 +44,7 @@ export default function HeroSection() {
                 <h1 className={`text-center text-[32px] ${ubuntu.className}`}>Та өөрийн бизнесээ бидэнтэй хамтарч бүрэн автоматжуулаарай. </h1>
                 <Button className={`border w-[180px] h-[60px] border-black text-black ${ubuntu.className}`}>Бидний тухай</Button>
             </div>
-                <div className="flex flex-col gap-2">
+                <div className="flex flex-col gap-12 mt-30">
                     <div className="flex gap-1">  {arr.map((item) => (
                         <div key={item} className="w-22 h-22 sm:w-28 sm:h-28    bg-[#ccff34]"></div>
                     ))}

@@ -21,7 +21,7 @@ export default function AboutSection() {
         handleResize();
     }, []);
     return (
-        <div className="w-screen flex flex-col items-center justify-center  bg-[#ccff34] ">
+        <div className="w-screen  flex flex-col items-center justify-center  ">
             <div className="flex flex-col justify-center items-center gap-6 h-100 md:h-50">
                 <h1 className={`${ubuntu.className}  text-4xl `}>Бидний тухай</h1>
                 <p className={`${ubuntu.className} font-light text-xl w-[300px] md:w-[500px] lg:w-[900px]  text-center`}>
@@ -31,7 +31,7 @@ export default function AboutSection() {
                 {teamMembers.map((member, index) => {
                     return <Card key={index} {...member} i={index}></Card>
                 })}
-            </div> : <div className="flex flex-col items-center justify-center">
+            </div> : <div className="flex flex-col items-center justify-center ">
                 {teamMembers.map((member, index) => {
                     return <Card key={index} {...member} i={index}></Card>
                 })}
