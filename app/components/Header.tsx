@@ -126,7 +126,7 @@ function Header() {
                             Ai.marketing
                         </h1>
                         <div>
-                            <h1 className={`${ubuntu.className} font-medium text-xl`}>Холбоо барих</h1>
+                            <h1 className={`${ubuntu.className} font-medium text-xl border-b`}>Холбоо барих</h1>
                         </div>
                     </div>
                     <div className={`${showNav ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-2 pointer-events-none"} flex items-center justify-center transition-all duration-300 ease-in-out`}>
@@ -134,21 +134,24 @@ function Header() {
                             <ul className={`${ubuntu.className} font-medium text-xl flex items-center justify-center gap-20`} >
                                 <li 
                                     onClick={(e) => handleSmoothScroll(e, 'hero')}
-                                    className="cursor-pointer hover:opacity-70 transition-opacity"
+                                    className="cursor-pointer relative group"
                                 >
-                                    Үндсэн цэс
+                                    <span className="relative z-10">Үндсэн цэс</span>
+                                    <span className="absolute bottom-0 left-0 w-0 h-[0.3px]  bg-black group-hover:w-full transition-all duration-300 ease-in-out"></span>
                                 </li>
                                 <li 
                                     onClick={(e) => handleSmoothScroll(e, 'about')}
-                                    className="cursor-pointer hover:opacity-70 transition-opacity"
+                                    className="cursor-pointer relative group"
                                 >
-                                    Бидний тухай
+                                    <span className="relative z-10">Бидний тухай</span>
+                                    <span className="absolute bottom-0 left-0 w-0 h-[0.3px] bg-black group-hover:w-full transition-all duration-300 ease-in-out"></span>
                                 </li>
                                 <li 
                                     onClick={(e) => handleSmoothScroll(e, 'service')}
-                                    className="cursor-pointer hover:opacity-70 transition-opacity"
+                                    className="cursor-pointer relative group"
                                 >
-                                    Үйлчилгээ
+                                    <span className="relative z-10">Үйлчилгээ</span>
+                                    <span className="absolute bottom-0 left-0 w-0 h-[0.3px] bg-black group-hover:w-full transition-all duration-300 ease-in-out"></span>
                                 </li>
                             </ul>
                         </nav>
