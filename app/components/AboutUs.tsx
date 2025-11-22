@@ -21,7 +21,7 @@ export default function AboutSection() {
         handleResize();
     }, []);
     return (
-        <div className="w-screen  flex flex-col lg:gap-10 items-center justify-center  ">
+        <div id="about" className="w-screen  flex flex-col lg:gap-10 items-center justify-center  ">
             <div className="flex flex-col justify-center items-center gap-6 lg:gap-10 h-100 md:h-50">
                 <h1 className={`${ubuntu.className}  text-4xl lg:text-6xl `}>Бидний тухай</h1>
                 <p className={`${ubuntu.className} font-light text-xl w-[300px] md:w-[500px] lg:w-[900px]  text-center`}>

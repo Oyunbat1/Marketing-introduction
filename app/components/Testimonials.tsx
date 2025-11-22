@@ -34,8 +34,8 @@ export default function Testimonials() {
     const activeItem = testimonialData[isActive];
 
     return (
-        <div className="h-screen w-screen px-14">
-            <div className="mx-2 h-[500px] mt-10 flex flex-col items-center justify-around gap-10">
+        <div className="min-h-screen w-screen px-4 md:px-14 pt-14 pb-8">
+            <div className="mx-2 min-h-[500px] mt-10 flex flex-col items-center justify-around gap-10">
                 <div className="w-full flex flex-col justify-around gap-4 h-full items-center ">
                     <div className="flex w-full gap-10 ">
 
