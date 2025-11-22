@@ -10,11 +10,18 @@ import Testimonials from "./components/Testimonials";
 export default function Home() {
   useEffect(() => {
     const lenis = new Lenis();
+    // Expose Lenis to window for use in Header component
+    (window as any).lenis = lenis;
     function raf(time: number) {
       lenis.raf(time);
       requestAnimationFrame(raf);
     }
     requestAnimationFrame(raf);
+    
+    return () => {
+      lenis.destroy();
+      delete (window as any).lenis;
+    };
   }, [])
 
   return (
