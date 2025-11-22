@@ -43,12 +43,12 @@ export default function Service() {
 
     return (
         <div className="h-screen w-screen flex flex-col gap-10">
-            <div className="flex flex-col items-start gap-4 px-4 mt-12 md:flex-row md:justify-around md:items-center  border-b border-black pb-8   ">
+            <div className="flex flex-col items-start gap-4 px-12 mt-12 md:flex-row md:justify-around md:items-center  border-b border-black pb-8   ">
                 <h1 className={`${ubuntu.className} text-5xl md:text-7xl md:w-[860px] font-bold`}>Бид ямар үйлчилгээг санал болгож чадах вэ?</h1>
                 <p className={`${ubuntu.className} font-medium ml-2`}>Ai.marketing*</p>
             </div>
 
-            <div className="px-6 mt-4">
+            <div className="px-12 lg:px-38 mt-4">
                 <ul className="flex flex-col p-2 gap-4">
                     {items.map((item, index) => (
                         <div key={index} className="py-8 border-b border-black">

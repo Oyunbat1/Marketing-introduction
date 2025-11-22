@@ -6,6 +6,7 @@ import Lenis from 'lenis'
 import AboutSection from "./components/AboutUs";
 import FAQ from "./components/FAQ";
 import Service from "./components/Service";
+import Testimonials from "./components/Testimonials";
 export default function Home() {
   useEffect(() => {
     const lenis = new Lenis();
@@ -23,6 +24,7 @@ export default function Home() {
       <AboutSection />
       <FAQ />
       <Service />
+      <Testimonials />
     </div>
   );
 }
