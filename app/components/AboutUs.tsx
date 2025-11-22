@@ -4,7 +4,7 @@ import { useState, useEffect } from "react"
 import { Ubuntu } from "next/font/google";
 import Card from "./AboutCard";
 import teamMembers from "@/lib/teamMembers";
-import { useScroll, motion, MotionValue, useTransform , useInView } from "framer-motion";
+import { useScroll, motion, MotionValue, useTransform, useInView } from "framer-motion";
 import { descriptionSlideUp } from "../js/anim"
 import Image from "next/image";
 import { useRef } from "react";
@@ -30,9 +30,9 @@ export default function AboutSection() {
         <div id="about" ref={ref} className="w-screen  flex flex-col lg:gap-10 items-center justify-center  ">
             <div className="flex flex-col justify-center items-center gap-6 lg:gap-10 h-100 md:h-50">
                 <h1 className={`${ubuntu.className}  text-4xl lg:text-6xl `}>Бидний тухай</h1>
-                <p className={`m-0 leading-[1.3] flex gap-2 lg:gap-3  w-[340px] md:w-[600px] lg:w-[800px] xl:w-[1200px] flex-wrap  justify-center `}>
+                <p className={`m-0 leading-[1.3] flex gap-2 lg:gap-3  w-[360px] md:w-[600px] lg:w-[800px] xl:w-[1200px] flex-wrap  justify-center `}>
                     {phase.split(" ").map((word, index) => {
-                        return <span key={index} className={`${ubuntu.className} text-[22px] lg:text-[20px] md:text-[40px]  uppercase text-center max-w-[100vw] leading-none  mask relative inline-flex overflow-hidden`}><motion.span variants={descriptionSlideUp} animate={isInView ? "open" : "closed"} custom={index} key={index}>{word}</motion.span></span>
+                        return <span key={index} className={`${ubuntu.className} text-[18px] lg:text-[20px] md:text-[40px]  uppercase text-center max-w-[100vw] leading-none  mask relative inline-flex overflow-hidden`}><motion.span variants={descriptionSlideUp} animate={isInView ? "open" : "closed"} custom={index} key={index}>{word}</motion.span></span>
                     })}
                 </p>
             </div>
