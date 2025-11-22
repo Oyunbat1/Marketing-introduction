@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import { ubuntu } from "./Header";
+import { motion, AnimatePresence } from 'framer-motion';
 
 export default function Testimonials() {
     const [isActive, setIsActive] = useState(0);
@@ -40,35 +41,77 @@ export default function Testimonials() {
                     <div className="flex w-full gap-10 ">
 
                         <div className="flex flex-col gap-10 md:ml-10 lg:ml-80 xl:ml-96">
-                            <h1 className={`${ubuntu.className} text-2xl font-medium md:text-3xl lg:text-4xl xl:text-6xl`}>{activeItem.testimonial}</h1>
+                            <AnimatePresence mode="wait">
+                                <motion.h1
+                                    key={isActive}
+                                    initial={{ opacity: 0, y: 20 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    exit={{ opacity: 0, y: -20 }}
+                                    transition={{ 
+                                        duration: 0.4, 
+                                        ease: [0.4, 0, 0.2, 1] // ease-in-out
+                                    }}
+                                    className={`${ubuntu.className} text-2xl font-medium md:text-3xl lg:text-4xl xl:text-6xl`}
+                                >
+                                    {activeItem.testimonial}
+                                </motion.h1>
+                            </AnimatePresence>
 
-                            <div className="flex gap-6 items-center">
-                                <Image
-                                    src={activeItem.image}
-                                    alt={activeItem.name}
-                                    width={50}
-                                    height={50}
-                                    className="rounded-full"
-                                />
+                            <AnimatePresence mode="wait">
+                                <motion.div
+                                    key={isActive}
+                                    initial={{ opacity: 0, x: -20 }}
+                                    animate={{ opacity: 1, x: 0 }}
+                                    exit={{ opacity: 0, x: 20 }}
+                                    transition={{ 
+                                        duration: 0.4, 
+                                        ease: [0.4, 0, 0.2, 1],
+                                        delay: 0.1
+                                    }}
+                                    className="flex gap-6 items-center"
+                                >
+                                    <motion.div
+                                        initial={{ scale: 0.8, opacity: 0 }}
+                                        animate={{ scale: 1, opacity: 1 }}
+                                        transition={{ 
+                                            duration: 0.3, 
+                                            ease: [0.4, 0, 0.2, 1],
+                                            delay: 0.2
+                                        }}
+                                    >
+                                        <Image
+                                            src={activeItem.image}
+                                            alt={activeItem.name}
+                                            width={50}
+                                            height={50}
+                                            className="rounded-full"
+                                        />
+                                    </motion.div>
 
-                                <div className="flex flex-col">
-                                    <h2 className={`${ubuntu.className} font-bold`}>{activeItem.name}</h2>
-                                    <h3 className={`${ubuntu.className} text-gray-600`}>{activeItem.position}</h3>
-                                </div>
-                            </div>
+                                    <div className="flex flex-col">
+                                        <h2 className={`${ubuntu.className} font-bold`}>{activeItem.name}</h2>
+                                        <h3 className={`${ubuntu.className} text-gray-600`}>{activeItem.position}</h3>
+                                    </div>
+                                </motion.div>
+                            </AnimatePresence>
                         </div>
 
                     </div>
                 </div>
                 <div className="flex justify-around p-4">
                     {skills.map((item, index) => (
-                        <div
+                        <motion.div
                             key={index}
                             onClick={() => setIsActive(index)}
-                            className={`p-2 border flex items-center justify-center w-[120px] lg:w-[220px] py-4 lg:py-6 border-gray-400 ${isActive === index ? "bg-[#ccff34] border-t-3 border-t-black" : ""}`}
+                            whileHover={{ scale: 1.05 }}
+                            whileTap={{ scale: 0.95 }}
+                            transition={{ duration: 0.2, ease: "easeInOut" }}
+                            className={`p-2 border flex items-center justify-center w-[120px] lg:w-[220px] py-4 lg:py-6 border-gray-400 cursor-pointer transition-colors duration-300 ${
+                                isActive === index ? "bg-[#ccff34] border-t-3 border-t-black" : "hover:bg-gray-100"
+                            }`}
                         >
                             {item}
-                        </div>
+                        </motion.div>
                     ))}
                 </div>
             </div>

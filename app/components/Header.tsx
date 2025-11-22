@@ -1,5 +1,6 @@
 "use client"
 import { useState, useEffect, useRef } from "react"
+import { useScroll, motion, MotionValue, useTransform } from "framer-motion";
 import { Roboto, Ubuntu } from "next/font/google";
 const roboto = Roboto({
     subsets: ["latin"],
@@ -119,18 +120,19 @@ function Header() {
                         </button>
                     </div> : <div className=" flex flex-col fixed h-20  w-full justify-around items-center top-4">
                     <div className="flex w-full justify-around gap-180 ">
-                        <h1 
+                        <motion.h1 
+                        initial={{opacity:0, translateX: -20}} animate={{opacity:1, translateX: 0}} transition={{duration: 0.5, ease: "easeInOut"}} 
                             onClick={(e) => handleSmoothScroll(e, 'hero')}
                             className={`${ubuntu.className} font-medium text-xl cursor-pointer hover:opacity-70 transition-opacity`}
                         >
                             Ai.marketing
-                        </h1>
-                        <div>
+                        </motion.h1>
+                        <motion.div initial={{opacity:0, translateX: 20}} animate={{opacity:1, translateX: 0}} transition={{duration: 0.5, ease: "easeInOut"}} >
                             <h1 className={`${ubuntu.className} font-medium text-xl border-b`}>Холбоо барих</h1>
-                        </div>
+                        </motion.div>
                     </div>
-                    <div className={`${showNav ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-2 pointer-events-none"} flex items-center justify-center transition-all duration-300 ease-in-out`}>
-                        <nav>
+                        <motion.div initial={{ translateY: -20}} animate={{ translateY: 0}} transition={{duration: 0.5, ease: "easeInOut"}} className={`${showNav ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-2 pointer-events-none"} flex items-center justify-center transition-all duration-300 ease-in-out`}>
+                            <nav>
                             <ul className={`${ubuntu.className} font-medium text-xl flex items-center justify-center gap-20`} >
                                 <li 
                                     onClick={(e) => handleSmoothScroll(e, 'hero')}
@@ -155,12 +157,12 @@ function Header() {
                                 </li>
                             </ul>
                         </nav>
-                    </div>
+                    </motion.div>
                 </div>}
                 </div>
             </div>
             
-            {/* Mobile Menu Overlay */}
+            
             {isMobile && (
                 <div 
                     className={`fixed inset-0 bg-white z-[45] transition-all duration-300 ease-in-out ${

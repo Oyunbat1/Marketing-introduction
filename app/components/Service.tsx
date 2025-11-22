@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from "react";
 import { Ubuntu } from "next/font/google";
 import { ChevronDown, ChevronUp } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
 
 export const ubuntu = Ubuntu({
     subsets: ["latin"],
@@ -57,12 +58,30 @@ export default function Service() {
                                 className={`${ubuntu.className} text-xl md:text-2xl lg:text-3xl flex items-center justify-between cursor-pointer gap-2`}
                             >
                                 <span className="flex-1">{item.title}</span>
-                                {activeIndex === index ? <ChevronUp className="flex-shrink-0" /> : <ChevronDown className="flex-shrink-0" />}
+                                <motion.div
+                                    animate={{ rotate: activeIndex === index ? 180 : 0 }}
+                                    transition={{ duration: 0.3, ease: "easeInOut" }}
+                                >
+                                    <ChevronDown className="flex-shrink-0" />
+                                </motion.div>
                             </li>
 
-                            {activeIndex === index && (
-                                <p className="mt-4 text-base md:text-lg leading-relaxed pb-4">{item.content}</p>
-                            )}
+                            <AnimatePresence>
+                                {activeIndex === index && (
+                                    <motion.div
+                                        initial={{ height: 0, opacity: 0 }}
+                                        animate={{ height: "auto", opacity: 1 }}
+                                        exit={{ height: 0, opacity: 0 }}
+                                        transition={{ 
+                                            duration: 0.4, 
+                                            ease: [0.4, 0, 0.2, 1] // ease-in-out cubic bezier
+                                        }}
+                                        style={{ overflow: "hidden" }}
+                                    >
+                                        <p className="mt-4 text-base md:text-lg leading-relaxed pb-4">{item.content}</p>
+                                    </motion.div>
+                                )}
+                            </AnimatePresence>
                         </div>
                     ))}
                 </ul>
