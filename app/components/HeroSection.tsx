@@ -6,7 +6,7 @@ import { useScroll, motion, MotionValue, useTransform } from "framer-motion";
 import { Ubuntu } from "next/font/google";
 import MoreButton from "./MoreButton";
 export const ubuntu = Ubuntu({
-    subsets: ["latin"], 
+    subsets: ["latin"],
     weight: ["300", "400", "500", "700"],
     style: ["normal", "italic"]
 });
@@ -53,10 +53,10 @@ export default function HeroSection() {
     }, []);
     return (
         <div id="hero" className="min-h-screen w-full flex flex-col justify-center items-center gap-8 pt-20 pb-8 px-4">
-            {isTablet ? <div className="flex  justify-center w-[1200px] min-h-screen items-center gap-4 pl-[10px]">
+            {isTablet ? <div className="flex  justify-center w-[1200px] min-h-screen items-center gap-4 pl-2.5">
                 <motion.div className="flex flex-col w-full justify-center gap-4 "  >
-                    <motion.h1 initial={{opacity:0, translateY:20}} animate={{opacity:1, translateY: 0}} transition={{delay:1, duration: 0.5, ease: "easeInOut"}} className={`font-medium text-[32px] md:text-[42px] lg:text-[62px] xl:text-[82px]  ${ubuntu.className}`}>Хиймэл оюун & Digital marketing</motion.h1>
-                    <motion.p initial={{opacity:0, translateY:20}} animate={{opacity:1, translateY: 0}} transition={{delay:1.5, duration: 0.5, ease: "easeInOut"}} className={`${ubuntu.className} md:text-[20px] w-[400px]`}>Та өөрийн бизнесээ бидэнтэй хамтарч бүрэн автоматжуулаарай.</motion.p>
+                    <motion.h1 initial={{ opacity: 0, translateY: 20 }} animate={{ opacity: 1, translateY: 0 }} transition={{ delay: 1, duration: 0.5, ease: "easeInOut" }} className={`font-medium text-[32px] md:text-[42px] lg:text-[62px] xl:text-[82px]  ${ubuntu.className}`}>Хиймэл оюун & Digital marketing</motion.h1>
+                    <motion.p initial={{ opacity: 0, translateY: 20 }} animate={{ opacity: 1, translateY: 0 }} transition={{ delay: 1.5, duration: 0.5, ease: "easeInOut" }} className={`${ubuntu.className} md:text-[20px] w-[400px]`}>Та өөрийн бизнесээ бидэнтэй хамтарч бүрэн автоматжуулаарай.</motion.p>
                     <div onClick={(e) => handleSmoothScroll(e, 'about')}><MoreButton>Бидний тухай</MoreButton></div>
                 </motion.div>
                 <div className="flex flex-col gap-10">

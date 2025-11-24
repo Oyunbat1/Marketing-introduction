@@ -1,8 +1,8 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { ubuntu } from "./Header";
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
 
 export default function Testimonials() {
     const [isActive, setIsActive] = useState(0);
@@ -31,11 +31,15 @@ export default function Testimonials() {
         },
 
     ];
-
+    const containerRef = useRef(null)
     const activeItem = testimonialData[isActive];
-
+    const { scrollYProgress } = useScroll({
+        target: containerRef,
+        offset: ["start end", "end start"]
+    })
+    const height = useTransform(scrollYProgress, [0, 1], [50, 0]);
     return (
-        <div className="min-h-screen w-screen px-4 md:px-14 pt-14 pb-8">
+        <div ref={containerRef} className="min-h-screen w-screen px-4 md:px-14 pt-14 pb-8 relative">
             <div className="mx-2 min-h-[500px] mt-10 flex flex-col items-center justify-around gap-10">
                 <div className="w-full flex flex-col justify-around gap-4 h-full items-center ">
                     <div className="flex w-full gap-10 ">
@@ -47,8 +51,8 @@ export default function Testimonials() {
                                     initial={{ opacity: 0, y: 20 }}
                                     animate={{ opacity: 1, y: 0 }}
                                     exit={{ opacity: 0, y: -20 }}
-                                    transition={{ 
-                                        duration: 0.4, 
+                                    transition={{
+                                        duration: 0.4,
                                         ease: [0.4, 0, 0.2, 1] // ease-in-out
                                     }}
                                     className={`${ubuntu.className} text-2xl font-medium md:text-3xl lg:text-4xl xl:text-6xl`}
@@ -63,8 +67,8 @@ export default function Testimonials() {
                                     initial={{ opacity: 0, x: -20 }}
                                     animate={{ opacity: 1, x: 0 }}
                                     exit={{ opacity: 0, x: 20 }}
-                                    transition={{ 
-                                        duration: 0.4, 
+                                    transition={{
+                                        duration: 0.4,
                                         ease: [0.4, 0, 0.2, 1],
                                         delay: 0.1
                                     }}
@@ -73,8 +77,8 @@ export default function Testimonials() {
                                     <motion.div
                                         initial={{ scale: 0.8, opacity: 0 }}
                                         animate={{ scale: 1, opacity: 1 }}
-                                        transition={{ 
-                                            duration: 0.3, 
+                                        transition={{
+                                            duration: 0.3,
                                             ease: [0.4, 0, 0.2, 1],
                                             delay: 0.2
                                         }}
@@ -106,15 +110,22 @@ export default function Testimonials() {
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.95 }}
                             transition={{ duration: 0.2, ease: "easeInOut" }}
-                            className={`p-2 border flex items-center justify-center w-[120px] lg:w-[220px] py-4 lg:py-6 border-gray-400 cursor-pointer transition-colors duration-300 ${
-                                isActive === index ? "bg-[#ccff34] border-t-3 border-t-black" : "hover:bg-gray-100"
-                            }`}
+                            className={`p-2 border flex items-center justify-center w-[120px] lg:w-[220px] py-4 lg:py-6 border-gray-400 cursor-pointer transition-colors duration-300 ${isActive === index ? "bg-[#ccff34] border-t-3 border-t-black" : "hover:bg-gray-100"
+                                }`}
                         >
                             {item}
                         </motion.div>
                     ))}
                 </div>
+
             </div>
+            <motion.div
+
+                style={{ height }}
+                className=" absolute   left-0 right-0 mt-80 lg:mt-30 "
+            >
+                <div className="h-[1000%] w-full rounded-b-[50%] bg-[#CBCBCB] z-30 absolute bottom-0  left-0 shadow-[0px_60px_50px_rgba(0,0,0,0.248)]"></div>
+            </motion.div>
         </div>
     );
 }

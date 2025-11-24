@@ -62,7 +62,7 @@ export default function Service() {
                                     animate={{ rotate: activeIndex === index ? 180 : 0 }}
                                     transition={{ duration: 0.3, ease: "easeInOut" }}
                                 >
-                                    <ChevronDown className="flex-shrink-0" />
+                                    <ChevronDown className="shrink-0" />
                                 </motion.div>
                             </li>
 
@@ -72,8 +72,8 @@ export default function Service() {
                                         initial={{ height: 0, opacity: 0 }}
                                         animate={{ height: "auto", opacity: 1 }}
                                         exit={{ height: 0, opacity: 0 }}
-                                        transition={{ 
-                                            duration: 0.4, 
+                                        transition={{
+                                            duration: 0.4,
                                             ease: [0.4, 0, 0.2, 1] // ease-in-out cubic bezier
                                         }}
                                         style={{ overflow: "hidden" }}

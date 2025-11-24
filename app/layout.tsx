@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Footer from "./components/Footer";
 import "./globals.css";
 
 
@@ -19,6 +20,7 @@ export default function RootLayout({
         className={` antialiased`}
       >
         {children}
+        <Footer />
       </body>
     </html>
   );
