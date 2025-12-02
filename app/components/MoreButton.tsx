@@ -27,9 +27,9 @@ const MoreButton = ({ children, backgroundColor = "#ccff34", ...attributes }: { 
 
     return (
         <Magnetic>
-            <div className='text-black'>
+            <div className='hover:text-black'>
                 <div
-                    className="rounded-2xl border border-[#888] cursor-pointer relative flex items-center justify-center mt-[80px] w-[200px] h-[80px] lg:w-[130px]  lg:h-[130px] xl:w-[200px] xl:h-[80px] p-[10px] overflow-hidden group  transition duration-300 "
+                    className="rounded-2xl border border-black cursor-pointer relative flex items-center justify-center mt-[80px] w-[200px] h-[80px] lg:w-[130px]  lg:h-[130px] xl:w-[400px] xl:h-[80px] p-[10px] overflow-hidden group  transition duration-300 "
                     onMouseEnter={manageMouseEnter}
                     onMouseLeave={manageMouseLeave}
                     {...attributes}

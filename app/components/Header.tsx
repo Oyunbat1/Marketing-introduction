@@ -1,6 +1,7 @@
 "use client"
 import { useState, useEffect, useRef } from "react"
 import { useScroll, motion, MotionValue, useTransform } from "framer-motion";
+import { useRouter } from "next/navigation";
 import { Roboto, Ubuntu } from "next/font/google";
 const roboto = Roboto({
     subsets: ["latin"],
@@ -20,6 +21,11 @@ function Header() {
     const [showNav, setShowNav] = useState(true);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const lastScrollY = useRef(0);
+    const router = useRouter();
+    const handleContact = () => {
+        router.push('/contact');
+    }
+
 
     const handleSmoothScroll = (e: React.MouseEvent<HTMLElement>, targetId: string) => {
         e.preventDefault();
@@ -102,18 +108,18 @@ function Header() {
 
     return (
         <>
-            <div className="w-screen h-[60px] fixed z-[50]">
+            <div className="w-screen h-[60px] fixed z-50">
                 <div className="flex w-full justify-around p-4">
-                    {isMobile ? <div className="fixed w-full flex h-[60px] justify-around items-center z-[60]">
+                    {isMobile ? <div className="fixed w-full flex h-[60px] justify-around items-center z-60">
                         <h1
                             onClick={(e) => handleSmoothScroll(e, 'hero')}
-                            className={`${ubuntu.className} font-medium text-xl cursor-pointer hover:opacity-70 transition-opacity relative z-[61]`}
+                            className={`${ubuntu.className} font-medium text-xl cursor-pointer hover:opacity-70 transition-opacity relative z-61`}
                         >
                             Ai.marketing
                         </h1>
                         <button
                             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                            className={`${ubuntu.className} font-medium text-xl cursor-pointer hover:opacity-70 transition-opacity relative z-[61]`}
+                            className={`${ubuntu.className} font-medium text-xl cursor-pointer hover:opacity-70 transition-opacity relative z-61`}
                             aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
                         >
                             {isMobileMenuOpen ? "Close" : "Menu"}
@@ -128,7 +134,7 @@ function Header() {
                                 Ai.marketing
                             </motion.h1>
                             <motion.div initial={{ opacity: 0, translateX: 20 }} animate={{ opacity: 1, translateX: 0 }} transition={{ duration: 0.5, ease: "easeInOut" }} >
-                                <h1 className={`${ubuntu.className} font-medium text-xl border-b`}>Холбоо барих</h1>
+                                <h1 onClick={handleContact} className={`${ubuntu.className} font-medium text-xl border-b cursor-pointer`}>Холбоо барих</h1>
                             </motion.div>
                         </div>
                         <motion.div initial={{ translateY: -20 }} animate={{ translateY: 0 }} transition={{ duration: 0.5, ease: "easeInOut" }} className={`${showNav ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-2 pointer-events-none"} flex items-center justify-center transition-all duration-300 ease-in-out`}>
@@ -165,7 +171,7 @@ function Header() {
 
             {isMobile && (
                 <div
-                    className={`fixed inset-0 bg-white z-[45] transition-all duration-300 ease-in-out ${isMobileMenuOpen
+                    className={`fixed inset-0 bg-white z-45 transition-all duration-300 ease-in-out ${isMobileMenuOpen
                         ? 'opacity-100 visible translate-y-0 pointer-events-auto'
                         : 'opacity-0 invisible -translate-y-4 pointer-events-none'
                         }`}
@@ -194,7 +200,7 @@ function Header() {
                             >
                                 Үйлчилгээ
                             </li>
-                            <li
+                            <li onClick={handleContact}
                                 className="cursor-pointer hover:opacity-70 transition-opacity py-2 transform hover:scale-105"
                             >
                                 Холбоо барих
