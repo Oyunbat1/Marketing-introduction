@@ -5,7 +5,7 @@ import { Roboto, Ubuntu } from "next/font/google";
 const roboto = Roboto({
     subsets: ["latin"],
     weight: [
-        "100", "300", "400", "500", "700", "900" 
+        "100", "300", "400", "500", "700", "900"
     ],
     style: ["normal", "italic"]
 });
@@ -29,7 +29,7 @@ function Header() {
             if (isMobileMenuOpen) {
                 setIsMobileMenuOpen(false);
             }
-            
+
             // Use Lenis smooth scroll if available, otherwise use native smooth scroll
             const lenis = (window as any).lenis;
             if (lenis) {
@@ -37,7 +37,7 @@ function Header() {
                 const headerHeight = 80;
                 const elementPosition = element.getBoundingClientRect().top + window.scrollY;
                 const offsetPosition = elementPosition - headerHeight;
-                
+
                 lenis.scrollTo(offsetPosition, {
                     duration: 1.5,
                     easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t))
@@ -68,7 +68,7 @@ function Header() {
         const handleScroll = () => {
             const currentScrollY = window.scrollY;
             setIsScrolled(currentScrollY > 50);
-            
+
             // Show nav when scrolling up, hide when scrolling down (after initial scroll)
             if (currentScrollY > 100) {
                 setShowNav(currentScrollY < lastScrollY.current);
@@ -105,13 +105,13 @@ function Header() {
             <div className="w-screen h-[60px] fixed z-[50]">
                 <div className="flex w-full justify-around p-4">
                     {isMobile ? <div className="fixed w-full flex h-[60px] justify-around items-center z-[60]">
-                        <h1 
+                        <h1
                             onClick={(e) => handleSmoothScroll(e, 'hero')}
                             className={`${ubuntu.className} font-medium text-xl cursor-pointer hover:opacity-70 transition-opacity relative z-[61]`}
                         >
                             Ai.marketing
                         </h1>
-                        <button 
+                        <button
                             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
                             className={`${ubuntu.className} font-medium text-xl cursor-pointer hover:opacity-70 transition-opacity relative z-[61]`}
                             aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
@@ -119,83 +119,82 @@ function Header() {
                             {isMobileMenuOpen ? "Close" : "Menu"}
                         </button>
                     </div> : <div className=" flex flex-col fixed h-20  w-full justify-around items-center top-4">
-                    <div className="flex w-full justify-around gap-180 ">
-                        <motion.h1 
-                        initial={{opacity:0, translateX: -20}} animate={{opacity:1, translateX: 0}} transition={{duration: 0.5, ease: "easeInOut"}} 
-                            onClick={(e) => handleSmoothScroll(e, 'hero')}
-                            className={`${ubuntu.className} font-medium text-xl cursor-pointer hover:opacity-70 transition-opacity`}
-                        >
-                            Ai.marketing
-                        </motion.h1>
-                        <motion.div initial={{opacity:0, translateX: 20}} animate={{opacity:1, translateX: 0}} transition={{duration: 0.5, ease: "easeInOut"}} >
-                            <h1 className={`${ubuntu.className} font-medium text-xl border-b`}>Холбоо барих</h1>
-                        </motion.div>
-                    </div>
-                        <motion.div initial={{ translateY: -20}} animate={{ translateY: 0}} transition={{duration: 0.5, ease: "easeInOut"}} className={`${showNav ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-2 pointer-events-none"} flex items-center justify-center transition-all duration-300 ease-in-out`}>
+                        <div className="flex w-full justify-around gap-180 ">
+                            <motion.h1
+                                initial={{ opacity: 0, translateX: -20 }} animate={{ opacity: 1, translateX: 0 }} transition={{ duration: 0.5, ease: "easeInOut" }}
+                                onClick={(e) => handleSmoothScroll(e, 'hero')}
+                                className={`${ubuntu.className} font-medium text-xl cursor-pointer hover:opacity-70 transition-opacity`}
+                            >
+                                Ai.marketing
+                            </motion.h1>
+                            <motion.div initial={{ opacity: 0, translateX: 20 }} animate={{ opacity: 1, translateX: 0 }} transition={{ duration: 0.5, ease: "easeInOut" }} >
+                                <h1 className={`${ubuntu.className} font-medium text-xl border-b`}>Холбоо барих</h1>
+                            </motion.div>
+                        </div>
+                        <motion.div initial={{ translateY: -20 }} animate={{ translateY: 0 }} transition={{ duration: 0.5, ease: "easeInOut" }} className={`${showNav ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-2 pointer-events-none"} flex items-center justify-center transition-all duration-300 ease-in-out`}>
                             <nav>
-                            <ul className={`${ubuntu.className} font-medium text-xl flex items-center justify-center gap-20`} >
-                                <li 
-                                    onClick={(e) => handleSmoothScroll(e, 'hero')}
-                                    className="cursor-pointer relative group"
-                                >
-                                    <span className="relative z-10">Үндсэн цэс</span>
-                                    <span className="absolute bottom-0 left-0 w-0 h-[0.3px]  bg-black group-hover:w-full transition-all duration-300 ease-in-out"></span>
-                                </li>
-                                <li 
-                                    onClick={(e) => handleSmoothScroll(e, 'about')}
-                                    className="cursor-pointer relative group"
-                                >
-                                    <span className="relative z-10">Бидний тухай</span>
-                                    <span className="absolute bottom-0 left-0 w-0 h-[0.3px] bg-black group-hover:w-full transition-all duration-300 ease-in-out"></span>
-                                </li>
-                                <li 
-                                    onClick={(e) => handleSmoothScroll(e, 'service')}
-                                    className="cursor-pointer relative group"
-                                >
-                                    <span className="relative z-10">Үйлчилгээ</span>
-                                    <span className="absolute bottom-0 left-0 w-0 h-[0.3px] bg-black group-hover:w-full transition-all duration-300 ease-in-out"></span>
-                                </li>
-                            </ul>
-                        </nav>
-                    </motion.div>
-                </div>}
+                                <ul className={`${ubuntu.className} font-medium text-xl flex items-center justify-center gap-20`} >
+                                    <li
+                                        onClick={(e) => handleSmoothScroll(e, 'hero')}
+                                        className="cursor-pointer relative group"
+                                    >
+                                        <span className="relative z-10">Үндсэн цэс</span>
+                                        <span className="absolute bottom-0 left-0 w-0 h-[0.3px]  bg-black group-hover:w-full transition-all duration-300 ease-in-out"></span>
+                                    </li>
+                                    <li
+                                        onClick={(e) => handleSmoothScroll(e, 'about')}
+                                        className="cursor-pointer relative group"
+                                    >
+                                        <span className="relative z-10">Бидний тухай</span>
+                                        <span className="absolute bottom-0 left-0 w-0 h-[0.3px] bg-black group-hover:w-full transition-all duration-300 ease-in-out"></span>
+                                    </li>
+                                    <li
+                                        onClick={(e) => handleSmoothScroll(e, 'service')}
+                                        className="cursor-pointer relative group"
+                                    >
+                                        <span className="relative z-10">Үйлчилгээ</span>
+                                        <span className="absolute bottom-0 left-0 w-0 h-[0.3px] bg-black group-hover:w-full transition-all duration-300 ease-in-out"></span>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </motion.div>
+                    </div>}
                 </div>
             </div>
-            
-            
+
+
             {isMobile && (
-                <div 
-                    className={`fixed inset-0 bg-white z-[45] transition-all duration-300 ease-in-out ${
-                        isMobileMenuOpen 
-                            ? 'opacity-100 visible translate-y-0 pointer-events-auto' 
-                            : 'opacity-0 invisible -translate-y-4 pointer-events-none'
-                    }`}
+                <div
+                    className={`fixed inset-0 bg-white z-[45] transition-all duration-300 ease-in-out ${isMobileMenuOpen
+                        ? 'opacity-100 visible translate-y-0 pointer-events-auto'
+                        : 'opacity-0 invisible -translate-y-4 pointer-events-none'
+                        }`}
                     onClick={() => setIsMobileMenuOpen(false)}
                 >
-                    <nav 
+                    <nav
                         className="h-full flex flex-col items-center justify-center gap-8"
                         onClick={(e) => e.stopPropagation()}
                     >
                         <ul className={`${ubuntu.className} font-medium text-2xl flex flex-col items-center justify-center gap-12`}>
-                            <li 
+                            <li
                                 onClick={(e) => handleSmoothScroll(e, 'hero')}
                                 className="cursor-pointer hover:opacity-70 transition-opacity py-2 transform hover:scale-105"
                             >
                                 Үндсэн цэс
                             </li>
-                            <li 
+                            <li
                                 onClick={(e) => handleSmoothScroll(e, 'about')}
                                 className="cursor-pointer hover:opacity-70 transition-opacity py-2 transform hover:scale-105"
                             >
                                 Бидний тухай
                             </li>
-                            <li 
+                            <li
                                 onClick={(e) => handleSmoothScroll(e, 'service')}
                                 className="cursor-pointer hover:opacity-70 transition-opacity py-2 transform hover:scale-105"
                             >
                                 Үйлчилгээ
                             </li>
-                            <li 
+                            <li
                                 className="cursor-pointer hover:opacity-70 transition-opacity py-2 transform hover:scale-105"
                             >
                                 Холбоо барих

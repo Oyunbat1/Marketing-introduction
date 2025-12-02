@@ -17,7 +17,7 @@ export default function Home() {
       requestAnimationFrame(raf);
     }
     requestAnimationFrame(raf);
-    
+
     return () => {
       lenis.destroy();
       delete (window as any).lenis;
@@ -28,8 +28,8 @@ export default function Home() {
     <div>
       <Header />
       <HeroSection />
-      <AboutSection />
       <FAQ />
+      <AboutSection />
       <Service />
       <Testimonials />
     </div>
