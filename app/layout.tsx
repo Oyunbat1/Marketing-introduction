@@ -1,14 +1,11 @@
+"use client"
 import type { Metadata } from "next";
 import Footer from "./components/Footer";
-import Header from "./components/Header";
+import { Toaster } from "sonner";
+import { useEffect } from "react";
+import { ApolloProvider } from "@apollo/client/react";
+import { client } from "../lib/apollo-client"
 import "./globals.css";
-
-
-
-export const metadata: Metadata = {
-  title: "Ai.marketing",
-  description: "Ai.marketing based in Mongolia",
-};
 
 export default function RootLayout({
   children,
@@ -20,8 +17,11 @@ export default function RootLayout({
       <body
         className={` antialiased`}
       >
-        {children}
-        <Footer />
+        <ApolloProvider client={client}>
+          {children}
+          <Footer />
+          <Toaster position="bottom-right" richColors />
+        </ApolloProvider>
       </body>
     </html>
   );
