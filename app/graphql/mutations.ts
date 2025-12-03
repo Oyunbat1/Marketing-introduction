@@ -4,9 +4,9 @@ export const CREATE_MESSAGE = gql`
   mutation CreateMessage(
     $name: String!
     $email: String!
-    $phoneNumber: String  # Use String! if you want to make this mandatory on the backend
-    $companyName: String! # Updated from 'social'
-    $role: String!        # Updated from 'company'
+    $phoneNumber: String  
+    $companyName: String! 
+    $role: String!       
     $service: String!
     $message: String!
   ) {
