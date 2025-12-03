@@ -1,59 +1,123 @@
-"use client"
-import { Button } from "@/components/ui/button"
-import { useState, useEffect } from "react"
+"use client";
+
+import React, { useRef } from "react";
 import { Ubuntu } from "next/font/google";
-import teamMembers from "@/lib/teamMembers";
-import { motion, useInView } from "framer-motion";
 import Link from "next/link";
-import { descriptionSlideUp } from "../js/anim"
 import Image from "next/image";
-import { useRef } from "react";
+import { motion, useInView, easeOut } from "framer-motion";
+
+import teamMembers from "@/lib/teamMembers";
+
 export const ubuntu = Ubuntu({
     subsets: ["latin"],
     weight: ["300", "400", "500", "700"],
-    style: ["normal", "italic"]
+    style: ["normal", "italic"],
 });
 
+// Animation Variants
+const slideUp = {
+    initial: { y: "100%" },
+    open: (i: number) => ({
+        y: "0%",
+        transition: { duration: 0.5, delay: 0.01 * i, ease: easeOut },
+    }),
+    closed: { y: "100%" },
+};
+
+const fadeIn = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.6 } }
+};
 
 export default function AboutSection() {
-    const [isTablet, setIsTablet] = useState(false);
+    const phrase = "Сүүлийн үеийн техник технологи, хиймэл оюун ухаан, маркетингийн зөв стратегийн тусламжтай манай баг таны бизнесийг бүрэн автоматжуулахад бэлэн байна. Бид өөрсдийн чаддаг зүйлүүдээ бодит болгон таны асуудлыг шийдхээр нэгдсэн билээ.";
 
-    const phase = " Сүүлийн үеийн техник технологи ,хиймэл оюун ухаан , маркетингийн зөв стратегийн тусламжтай манай баг  таны бизнесийг бүрэн автоматжуулахад бэлэн байна. Бид өөрсдийн чаддаг зүйлүүдээ бодит болгон таны асуудлыг шийдхээр нэгдсэн билээ."
-    const ref = useRef(null);
-    const isInView = useInView(ref)
-    useEffect(() => {
-        const handleResize = () => {
-            setIsTablet(window.innerWidth >= 728);
-        };
-        window.addEventListener("resize", handleResize);
-        handleResize();
-    }, []);
+    const descriptionRef = useRef(null);
+    const isInView = useInView(descriptionRef, { margin: "-10%" });
+
     return (
-        <div id="about" ref={ref} className="">
-            <div className="w-screen h-[400px] md:h-[800px] lg:h-screen  flex flex-col lg:gap-10 items-center justify-center bg-[#ccff34] ">
-                <p className={`m-0 leading-[1.3] flex gap-2 lg:gap-3  w-[320px] text-center md:w-[600px] lg:w-[800px] xl:w-[1200px] flex-wrap   `}>
-                    {phase.split(" ").map((word, index) => {
-                        return <span key={index} className={`${ubuntu.className} text-[18px] lg:text-[40px] md:text-[40px]  uppercase text-center max-w-[100vw] leading-none  mask relative inline-flex overflow-hidden`}><motion.span variants={descriptionSlideUp} animate={isInView ? "open" : "closed"} custom={index} key={index}>{word}</motion.span></span>
-                    })}
-                </p>
-            </div>
-            <div className="h-auto w-screen bg-[#ccff34] pb-10 lg:pb-26 px-8 pt-28 md:pt-0 ">
-                <div className="flex flex-col gap-10 md:flex-row md:flex md:justify-around">
-                    <h1 className={`${ubuntu.className} font-bold text-xl lg:text-2xl`}>Багийн гишүүд</h1>
-                    <div className="grid grid-cols-2 justify-center items-center gap-10 cursor-pointer">
-                        {teamMembers.map((member, index) => (
-                            <div className=" rounded-md flex flex-col justify-center items-center gap-2 lg:items-start md:gap-6 " key={member.id}>
-                                <Link href={`/team/${member.id}`} className="w-full">
-                                    <div className="h-60 md:h-100 w-full  rounded-md group overflow-hidden " >
-                                        <Image src={member.src} alt={member.name} width={160} height={152} className="h-full w-full object-cover rounded-md transition-all duration-400 group-hover:scale-110 " />
+        <section id="about" className={`${ubuntu.className} w-full bg-black text-white overflow-hidden`}>
 
-                                    </div></Link>
-                                <h1 className={`${ubuntu.className} font-bold cursor-pointer text-xl lg:text-3xl`}>{member.name}</h1>
-                            </div>
+            {/* 1. Manifesto / Description Section */}
+            <div className="w-full min-h-[70vh] flex flex-col items-center justify-center py-20 px-6">
+                <div
+                    ref={descriptionRef}
+                    className="max-w-[1200px] flex flex-wrap justify-center gap-x-2 md:gap-x-3 gap-y-1"
+                >
+                    {phrase.split(" ").map((word, index) => (
+                        <span
+                            key={index}
+                            className="relative overflow-hidden inline-flex"
+                        >
+                            <motion.span
+                                variants={slideUp}
+                                custom={index}
+                                initial="initial"
+                                animate={isInView ? "open" : "closed"}
+                                className="text-[20px] md:text-[32px] lg:text-[42px] font-medium leading-[1.2] tracking-tight text-center"
+                            >
+                                {word}
+                            </motion.span>
+                        </span>
+                    ))}
+                </div>
+            </div>
+
+            {/* 2. Team Section */}
+            <div className="w-full px-6 pb-32">
+                <div className="max-w-6xl mx-auto flex flex-col md:flex-row gap-12 md:gap-20">
+
+                    {/* Section Title */}
+                    <div className="md:w-1/3">
+                        <motion.h2
+                            initial={{ opacity: 0 }}
+                            whileInView={{ opacity: 1 }}
+                            viewport={{ once: true }}
+                            className="text-2xl md:text-3xl font-bold sticky top-24 text-neutral-200"
+                        >
+                            Багийн гишүүд
+                        </motion.h2>
+                    </div>
+
+                    {/* Members Grid */}
+                    <div className="md:w-2/3 grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-16">
+                        {teamMembers.map((member, index) => (
+                            <motion.div
+                                key={member.id}
+                                initial="hidden"
+                                whileInView="visible"
+                                viewport={{ once: true, margin: "-50px" }}
+                                variants={fadeIn}
+                                transition={{ delay: index * 0.1 }}
+                                className="group flex flex-col gap-4"
+                            >
+                                <Link href={`/team/${member.id}`} className="block w-full overflow-hidden rounded-lg">
+                                    <div className="relative aspect-[3/4] w-full overflow-hidden rounded-lg bg-neutral-900">
+                                        <Image
+                                            src={member.src}
+                                            alt={member.name}
+                                            fill
+                                            className="object-cover transition-all duration-500 group-hover:scale-105 group-hover:grayscale-0 grayscale md:grayscale"
+                                        // Note: 'grayscale md:grayscale' makes it B&W by default, color on hover. 
+                                        // Remove classes if you want full color always.
+                                        />
+                                    </div>
+                                </Link>
+
+                                <div className="flex flex-col">
+                                    <h3 className="text-xl font-bold text-white group-hover:text-[#ccff34] transition-colors">
+                                        {member.name}
+                                    </h3>
+
+                                    {member.job && (
+                                        <span className="text-sm text-gray-500">{member.job}</span>
+                                    )}
+                                </div>
+                            </motion.div>
                         ))}
                     </div>
                 </div>
             </div>
-        </div>
-    )
+        </section>
+    );
 }
